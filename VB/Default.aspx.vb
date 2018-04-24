@@ -1,4 +1,6 @@
-﻿Imports DevExpress.Web.ASPxTreeList
+﻿Option Infer On
+
+Imports DevExpress.Web.ASPxTreeList
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
