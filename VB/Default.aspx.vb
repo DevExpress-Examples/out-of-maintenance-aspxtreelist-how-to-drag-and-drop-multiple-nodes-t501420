@@ -23,17 +23,18 @@ Partial Public Class _Default
     End Sub
 
     Protected Sub ASPxTreeList1_ProcessDragNode(ByVal sender As Object, ByVal e As TreeListNodeDragEventArgs)
-        e.Handled = True
 
+        e.Handled = True
         Dim nodes = ASPxTreeList1.GetSelectedNodes()
 
         If nodes.Count = 0 Then
-            DataHelper.MoveNode(CType(e.Node.Key, Integer), CType(e.NewParentNode.Key, Integer))
+            DataHelper.MoveNode(Convert.ToInt32(e.Node.Key), Convert.ToInt32(e.NewParentNode.Key))
         Else
-            DataHelper.MoveNodes(nodes, CType(e.NewParentNode.Key, Integer))
+            DataHelper.MoveNodes(nodes, Convert.ToInt32(e.NewParentNode.Key))
         End If
     End Sub
-    Protected Sub ASPxTreeList1_HtmlDataCellPrepared(sender As Object, e As TreeListHtmlDataCellEventArgs)
+
+    Protected Sub ASPxTreeList1_HtmlDataCellPrepared(ByVal sender As Object, ByVal e As TreeListHtmlDataCellEventArgs)
         e.Cell.CssClass = "customClass"
     End Sub
 End Class
