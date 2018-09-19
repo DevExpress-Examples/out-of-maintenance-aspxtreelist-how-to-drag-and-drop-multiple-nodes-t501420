@@ -32,7 +32,6 @@
                 table.appendChild(row);
             }
         }
-
     </script>
 </head>
 <body>
