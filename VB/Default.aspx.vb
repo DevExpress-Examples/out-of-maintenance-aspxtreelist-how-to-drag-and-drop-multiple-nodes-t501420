@@ -15,56 +15,25 @@ Partial Public Class _Default
         If Not IsPostBack Then
             Session.Clear()
         End If
-        ASPxTreeList1.DataSource = Data
+
+        ASPxTreeList1.DataSource = DataHelper.GetData()
         ASPxTreeList1.DataBind()
+
         ASPxTreeList1.ExpandAll()
-    End Sub
-    Private ReadOnly Property Data() As List(Of SampleDataItem)
-        Get
-            Const key As String = "TreeListData"
-            If Session(key) Is Nothing Then
-                Session(key) = CreateData()
-            End If
-            Return DirectCast(Session(key), List(Of SampleDataItem))
-        End Get
-    End Property
-
-    Private Function CreateData() As List(Of SampleDataItem)
-        Dim result As New List(Of SampleDataItem)()
-        result.Add(New SampleDataItem(Guid.NewGuid(), Guid.Empty, "root", 0))
-        result.Add(New SampleDataItem(result(0), "a", 1))
-        result.Add(New SampleDataItem(result(0), "b", 2))
-        result.Add(New SampleDataItem(result(1), "a1", 3))
-        result.Add(New SampleDataItem(result(1), "a2", 4))
-        result.Add(New SampleDataItem(result(1), "a3", 5))
-        result.Add(New SampleDataItem(result(2), "b1", 6))
-        result.Add(New SampleDataItem(result(2), "b2", 7))
-        result.Add(New SampleDataItem(result(6), "b1a", 8))
-        result.Add(New SampleDataItem(result(6), "b1b", 9))
-        result.Add(New SampleDataItem(result(6), "b1c", 10))
-        Return result
-    End Function
-
-    Protected Sub ASPxTreeList1_CustomCallback(ByVal sender As Object, ByVal e As DevExpress.Web.ASPxTreeList.TreeListCustomCallbackEventArgs)
-        Dim tl As ASPxTreeList = DirectCast(sender, ASPxTreeList)
-        Dim nodes = tl.GetSelectedNodes(True)
-        Dim arg() As String = e.Argument.Split("|"c)
-        Dim parentNode As SampleDataItem = TryCast(tl.FindNodeByKeyValue(arg(0)).DataItem, SampleDataItem)
-        If arg.Length > 1 Then
-            Dim child As SampleDataItem = TryCast(tl.FindNodeByKeyValue(arg(1)).DataItem, SampleDataItem)
-            child.Parent = parentNode.Pk
-        Else
-            For Each node As TreeListNode In nodes
-                Dim child As SampleDataItem = TryCast(node.DataItem, SampleDataItem)
-                child.Parent = parentNode.Pk
-            Next node
-        End If
-        tl.DataBind()
-
     End Sub
 
     Protected Sub ASPxTreeList1_ProcessDragNode(ByVal sender As Object, ByVal e As TreeListNodeDragEventArgs)
-
         e.Handled = True
+
+        Dim nodes = ASPxTreeList1.GetSelectedNodes()
+
+        If nodes.Count = 0 Then
+            DataHelper.MoveNode(CType(e.Node.Key, Integer), CType(e.NewParentNode.Key, Integer))
+        Else
+            DataHelper.MoveNodes(nodes, CType(e.NewParentNode.Key, Integer))
+        End If
+    End Sub
+    Protected Sub ASPxTreeList1_HtmlDataCellPrepared(sender As Object, e As TreeListHtmlDataCellEventArgs)
+        e.Cell.CssClass = "customClass"
     End Sub
 End Class

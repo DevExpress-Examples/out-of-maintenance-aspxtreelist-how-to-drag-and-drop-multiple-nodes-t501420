@@ -1,8 +1,11 @@
-﻿Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", ".", "{E7100136-FDA4-46DF-B114-8F6ECC7C2DF8}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "VB", ".", "{E7100136-FDA4-46DF-B114-8F6ECC7C2DF8}"
 	ProjectSection(WebsiteProperties) = preProject
-        TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		Debug.AspNetCompiler.VirtualPath = "/WebSite"
 		Debug.AspNetCompiler.PhysicalPath = "."
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebSite\"
@@ -18,6 +21,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", ".", "{E7100136-F
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "2101"
+		SlnRelativePath = "..\VB\"
 	EndProjectSection
 EndProject
 Global
@@ -25,10 +29,13 @@ Global
 		Debug|.NET = Debug|.NET
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E7100136-FDA4-46DF-B114-8F6ECC7C2DF8}.Debug|.NET.ActiveCfg = Debug|.NET
-		{E7100136-FDA4-46DF-B114-8F6ECC7C2DF8}.Debug|.NET.Build.0 = Debug|.NET
+		{E7100136-FDA4-46DF-B114-8F6ECC7C2DF8}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{E7100136-FDA4-46DF-B114-8F6ECC7C2DF8}.Debug|.NET.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C27CC4F-A596-4AB7-A7F6-37357306FB9C}
 	EndGlobalSection
 EndGlobal
