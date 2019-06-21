@@ -1,4 +1,7 @@
 # ASPxTreeList - How to drag and drop multiple nodes
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/t501420)**
+<!-- run online end -->
 
 
 The sample illustrates how to drag and drop multiple nodes in ASPxTreeList when selection is enabled. To replace selected nodes from one parent node to another, it's sufficient to change the selected nodes' parent property at the DataSource level. This can be done by using the [ASPxTreeList.GetSelectedNodes](https://documentation.devexpress.com/AspNet/DevExpress.Web.ASPxTreeList.ASPxTreeList.GetSelectedNodes.method(DZAdlg)) method and the EventArgs [e.Node](https://documentation.devexpress.com/AspNet/DevExpress.Web.ASPxTreeList.TreeListNodeEventArgs.Node.property) and [e.NewParentNode](https://documentation.devexpress.com/AspNet/DevExpress.Web.ASPxTreeList.TreeListNodeDragEventArgs.NewParentNode.property) properties in the server-side [ProcessDragNode](https://documentation.devexpress.com/AspNet/DevExpress.Web.ASPxTreeList.ASPxTreeList.ProcessDragNode.event) event handler. The **DataHelper** class is used to generate data and move node(s) at the data source level.
