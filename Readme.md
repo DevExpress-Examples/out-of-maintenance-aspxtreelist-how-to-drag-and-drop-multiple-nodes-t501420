@@ -1,6 +1,6 @@
 # ASPxTreeList - How to drag and drop multiple nodes
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t501420)**
+**[[Run Online]](https://codecentral.devexpress.com/t501420/)**
 <!-- run online end -->
 
 
